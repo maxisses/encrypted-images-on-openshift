@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gotminingui
+  namespace: mdargatz-testencryptedimages
+  labels:
+    app: gotminingui
+    app.kubernetes.io/part-of: gotmining
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gotminingui
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gotminingui
+    spec:
+      containers:
+        - name: gotmining-frontend
+          image: 'docker.io/maxisses/gotminingui:encrypted'
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+            - name: GPT2SERVICEURL
+              value: >-
+                https://gotmining-backend.apps.cluster-6pwm6.6pwm6.sandbox1966.opentlc.com
