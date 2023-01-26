@@ -14,3 +14,5 @@ oc apply -f sample-deployment.yaml
 oc apply -f machine-config-crio-decrypt.yaml
 
 ## wait, while ALL worker nodes get restarted, one by one, creating the files on the hosts filesystem
+
+... your image should get decrypted and run fine now!
